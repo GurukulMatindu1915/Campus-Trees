@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campus Tree Directory</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    --paper:#f1ede2;
+    --paper-dark:#e6e0d0;
+    --ink:#26301f;
+    --bark:#5b4632;
+    --leaf:#3d5c3a;
+    --leaf-deep:#243d24;
+    --gold:#a67c3d;
+    --line:#c9c0a8;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at top left, rgba(61,92,58,0.06), transparent 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Spectral', Georgia, serif;
+    padding:32px 16px 80px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1c2118; --paper-dark:#242b1f; --ink:#e9e4d6; --bark:#c8b89a;
+      --leaf:#7fa876; --leaf-deep:#a9cf9e; --gold:#d3ac6d; --line:#3c4433;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#1c2118; --paper-dark:#242b1f; --ink:#e9e4d6; --bark:#c8b89a;
+    --leaf:#7fa876; --leaf-deep:#a9cf9e; --gold:#d3ac6d; --line:#3c4433;
+  }
+  .wrap{max-width:640px;margin:0 auto;}
+
+  .masthead{
+    text-align:center;
+    margin-bottom:28px;
+    padding-bottom:20px;
+    border-bottom:2px solid var(--ink);
+  }
+  .masthead .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--leaf-deep);
+    margin-bottom:8px;
+  }
+  .masthead h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:34px;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .masthead p{
+    font-style:italic;
+    color:var(--bark);
+    margin:8px 0 0;
+    font-size:14.5px;
+  }
+
+  /* ---- Index view ---- */
+  .index-list{display:flex;flex-direction:column;gap:12px;}
+  .index-item{
+    display:block;
+    background:var(--paper-dark);
+    border:1px solid var(--line);
+    padding:16px 18px;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .index-item .name{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:20px;
+  }
+  .index-item .sci{font-style:italic;color:var(--bark);font-size:13.5px;}
+  .index-item .meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--gold);
+    margin-top:6px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .empty{
+    text-align:center;
+    padding:60px 20px;
+    color:var(--bark);
+    font-style:italic;
+    border:1px dashed var(--line);
+  }
+
+  /* ---- Single tree card ---- */
+  .card{
+    background:var(--paper);
+    border:1px solid var(--ink);
+    padding:32px 28px;
+    position:relative;
+  }
+  .card::before{
+    content:attr(data-id);
+    position:absolute;
+    top:14px;
+    right:16px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    color:var(--gold);
+  }
+  .card .common{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:34px;
+    margin:0;
+  }
+  .card .sci{
+    font-style:italic;
+    color:var(--bark);
+    font-size:16px;
+    margin:2px 0 2px;
+  }
+  .card .fam{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--bark);
+    text-transform:uppercase;
+  }
+  .divider{border:none;border-top:1px solid var(--line);margin:18px 0;}
+
+  .stat-row{display:flex;gap:28px;margin-bottom:20px;}
+  .stat .num{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:32px;
+    line-height:1;
+  }
+  .stat .num sup{font-size:14px;font-weight:500;margin-left:2px;}
+  .stat .lbl{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--bark);
+    margin-top:4px;
+  }
+
+  dl{margin:0 0 18px;}
+  dl .row{display:flex;padding:7px 0;border-bottom:1px dotted var(--line);}
+  dl dt{
+    width:150px;
+    flex-shrink:0;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.03em;
+    color:var(--bark);
+  }
+  dl dd{margin:0;font-size:14.5px;}
+
+  .section-title{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--leaf-deep);
+    margin:20px 0 8px;
+  }
+  ul.facts{margin:0 0 4px;padding-left:20px;}
+  ul.facts li{font-size:14.5px;margin-bottom:8px;line-height:1.5;}
+
+  .back-link{
+    display:inline-block;
+    margin-top:24px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.05em;
+    color:var(--leaf-deep);
+    text-decoration:none;
+    border-bottom:1px solid var(--leaf-deep);
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+// ---- Every tree on campus lives here. Claude adds a new entry and republishes this
+// page whenever you give it a new tree's data. ----
+const TREES = {
+  "1": {
+    "name": "Jamun",
+    "sci": "Syzygium cumini",
+    "fam": "Myrtaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 241.3,
+    "height": 13.1064,
+    "dbh": 76.8,
+    "age": 55,
+    "carbon": 1471.22,
+    "eco": [
+      "Fruit supports birds and mammals, aiding seed dispersal.",
+      "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
+    ],
+    "econ": [
+      "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
+      "Timber is used for construction and furniture in rural areas."
+    ]
+  },
+  "2": {
+    "name": "Jamun",
+    "sci": "Syzygium cumini",
+    "fam": "Myrtaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 238.76,
+    "height": 13.411200000000001,
+    "dbh": 76.0,
+    "age": 54,
+    "carbon": 1473.84,
+    "eco": [
+      "Fruit supports birds and mammals, aiding seed dispersal.",
+      "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
+    ],
+    "econ": [
+      "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
+      "Timber is used for construction and furniture in rural areas."
+    ]
+  },
+  "3": {
+    "name": "Jamun",
+    "sci": "Syzygium cumini",
+    "fam": "Myrtaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 248.92000000000002,
+    "height": 12.4968,
+    "dbh": 79.2,
+    "age": 57,
+    "carbon": 1492.26,
+    "eco": [
+      "Fruit supports birds and mammals, aiding seed dispersal.",
+      "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
+    ],
+    "econ": [
+      "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
+      "Timber is used for construction and furniture in rural areas."
+    ]
+  },
+  "4": {
+    "name": "Peepal",
+    "sci": "Ficus religiosa",
+    "fam": "Moraceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 68.58,
+    "height": 10.668000000000001,
+    "dbh": 21.8,
+    "age": 12,
+    "carbon": 79.93,
+    "eco": [
+      "Large canopy provides significant shade and cools surrounding microclimates.",
+      "Fruit is a key food source for birds and bats, aiding seed dispersal across landscapes."
+    ],
+    "econ": [
+      "Bark, leaves and roots are used in traditional medicine.",
+      "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ]
+  },
+  "5": {
+    "name": "Peepal",
+    "sci": "Ficus religiosa",
+    "fam": "Moraceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 63.5,
+    "height": 7.62,
+    "dbh": 20.2,
+    "age": 11,
+    "carbon": 49.53,
+    "eco": [
+      "Large canopy provides significant shade and cools surrounding microclimates.",
+      "Fruit is a key food source for birds and bats, aiding seed dispersal across landscapes."
+    ],
+    "econ": [
+      "Bark, leaves and roots are used in traditional medicine.",
+      "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ]
+  },
+  "6": {
+    "name": "Peepal",
+    "sci": "Ficus religiosa",
+    "fam": "Moraceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 71.12,
+    "height": 6.7056000000000004,
+    "dbh": 22.6,
+    "age": 13,
+    "carbon": 54.54,
+    "eco": [
+      "Large canopy provides significant shade and cools surrounding microclimates.",
+      "Fruit is a key food source for birds and bats, aiding seed dispersal across landscapes."
+    ],
+    "econ": [
+      "Bark, leaves and roots are used in traditional medicine.",
+      "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ]
+  },
+  "10": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 50.8,
+    "height": 7.62,
+    "dbh": 16.2,
+    "age": 16,
+    "carbon": 44.49,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "11": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 50.8,
+    "height": 7.010400000000001,
+    "dbh": 16.2,
+    "age": 16,
+    "carbon": 41.02,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "12": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 53.34,
+    "height": 13.716000000000001,
+    "dbh": 17.0,
+    "age": 17,
+    "carbon": 86.86,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "13": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 38.1,
+    "height": 4.572,
+    "dbh": 12.1,
+    "age": 12,
+    "carbon": 15.41,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "14": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 50.8,
+    "height": 8.2296,
+    "dbh": 16.2,
+    "age": 16,
+    "carbon": 47.97,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "15": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 53.34,
+    "height": 8.382,
+    "dbh": 17.0,
+    "age": 17,
+    "carbon": 53.71,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "16": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 48.26,
+    "height": 8.2296,
+    "dbh": 15.4,
+    "age": 15,
+    "carbon": 43.4,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "17": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 40.64,
+    "height": 7.9248,
+    "dbh": 12.9,
+    "age": 13,
+    "carbon": 29.91,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "18": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 53.34,
+    "height": 8.2296,
+    "dbh": 17.0,
+    "age": 17,
+    "carbon": 52.76,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "19": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 48.26,
+    "height": 8.5344,
+    "dbh": 15.4,
+    "age": 15,
+    "carbon": 44.96,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "20": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 45.72,
+    "height": 8.6868,
+    "dbh": 14.6,
+    "age": 15,
+    "carbon": 41.16,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "21": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 43.18,
+    "height": 6.096,
+    "dbh": 13.7,
+    "age": 14,
+    "carbon": 26.06,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "22": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 50.8,
+    "height": 6.4008,
+    "dbh": 16.2,
+    "age": 16,
+    "carbon": 37.53,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "23": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 48.26,
+    "height": 5.1816,
+    "dbh": 15.4,
+    "age": 15,
+    "carbon": 27.63,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "24": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 45.72,
+    "height": 4.572,
+    "dbh": 14.6,
+    "age": 15,
+    "carbon": 22.0,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "25": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 40.64,
+    "height": 4.572,
+    "dbh": 12.9,
+    "age": 13,
+    "carbon": 17.48,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "26": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 50.8,
+    "height": 9.144,
+    "dbh": 16.2,
+    "age": 16,
+    "carbon": 53.16,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "27": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 58.42,
+    "height": 8.5344,
+    "dbh": 18.6,
+    "age": 19,
+    "carbon": 65.29,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "28": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 53.34,
+    "height": 7.315200000000001,
+    "dbh": 17.0,
+    "age": 17,
+    "carbon": 47.03,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "29": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 55.88,
+    "height": 7.315200000000001,
+    "dbh": 17.8,
+    "age": 18,
+    "carbon": 51.5,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "30": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 35.56,
+    "height": 4.572,
+    "dbh": 11.3,
+    "age": 11,
+    "carbon": 13.47,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "31": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 40.64,
+    "height": 6.096,
+    "dbh": 12.9,
+    "age": 13,
+    "carbon": 23.15,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "32": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 45.72,
+    "height": 10.3632,
+    "dbh": 14.6,
+    "age": 15,
+    "carbon": 48.9,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "33": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 48.26,
+    "height": 10.668000000000001,
+    "dbh": 15.4,
+    "age": 15,
+    "carbon": 55.9,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "34": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 55.88,
+    "height": 13.716000000000001,
+    "dbh": 17.8,
+    "age": 18,
+    "carbon": 95.12,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "35": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 45.72,
+    "height": 9.7536,
+    "dbh": 14.6,
+    "age": 15,
+    "carbon": 46.09,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "36": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 40.64,
+    "height": 5.1816,
+    "dbh": 12.9,
+    "age": 13,
+    "carbon": 19.75,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "37": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 55.88,
+    "height": 15.24,
+    "dbh": 17.8,
+    "age": 18,
+    "carbon": 105.42,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "38": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 43.18,
+    "height": 7.62,
+    "dbh": 13.7,
+    "age": 14,
+    "carbon": 32.4,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "39": {
+    "name": "Ashoka",
+    "sci": "Saraca asoca",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Vulnerable",
+    "girth": 50.8,
+    "height": 9.144,
+    "dbh": 16.2,
+    "age": 16,
+    "carbon": 53.16,
+    "eco": [
+      "Understorey tree that supports forest-floor biodiversity and stabilizes soil.",
+      "Flowers provide nectar for pollinators; overharvested in the wild, making cultivated specimens ecologically valuable."
+    ],
+    "econ": [
+      "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
+      "Popular ornamental and shade tree in gardens and temple courtyards."
+    ]
+  },
+  "40": {
+    "name": "Jamun",
+    "sci": "Syzygium cumini",
+    "fam": "Myrtaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 254.0,
+    "height": 15.24,
+    "dbh": 80.9,
+    "age": 58,
+    "carbon": 1884.04,
+    "eco": [
+      "Fruit supports birds and mammals, aiding seed dispersal.",
+      "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
+    ],
+    "econ": [
+      "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
+      "Timber is used for construction and furniture in rural areas."
+    ]
+  },
+  "41": {
+    "name": "Jamun",
+    "sci": "Syzygium cumini",
+    "fam": "Myrtaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 262.89,
+    "height": 12.8016,
+    "dbh": 83.7,
+    "age": 60,
+    "carbon": 1699.61,
+    "eco": [
+      "Fruit supports birds and mammals, aiding seed dispersal.",
+      "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
+    ],
+    "econ": [
+      "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
+      "Timber is used for construction and furniture in rural areas."
+    ]
+  },
+  "43": {
+    "name": "Neem",
+    "sci": "Azadirachta indica",
+    "fam": "Meliaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 355.6,
+    "height": 12.192,
+    "dbh": 113.2,
+    "age": 75,
+    "carbon": 3054.03,
+    "eco": [
+      "Improves soil fertility and moisture retention, and provides shade and shelter in harsh, exposed environments.",
+      "Supports biodiversity as habitat and food for various species, and acts as a natural, non-toxic biopesticide."
+    ],
+    "econ": [
+      "Provides economic value through seeds (oil, biopesticide), leaves, and timber.",
+      "Used as windbreaks and for soil improvement, reducing land-degradation costs."
+    ]
+  },
+  "44": {
+    "name": "Peepal",
+    "sci": "Ficus religiosa",
+    "fam": "Moraceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 63.5,
+    "height": 9.7536,
+    "dbh": 20.2,
+    "age": 11,
+    "carbon": 63.02,
+    "eco": [
+      "Large canopy provides significant shade and cools surrounding microclimates.",
+      "Fruit is a key food source for birds and bats, aiding seed dispersal across landscapes."
+    ],
+    "econ": [
+      "Bark, leaves and roots are used in traditional medicine.",
+      "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ]
+  },
+  "45": {
+    "name": "Peepal",
+    "sci": "Ficus religiosa",
+    "fam": "Moraceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 566.42,
+    "height": 15.24,
+    "dbh": 180.3,
+    "age": 100,
+    "carbon": 6978.66,
+    "eco": [
+      "Large canopy provides significant shade and cools surrounding microclimates.",
+      "Fruit is a key food source for birds and bats, aiding seed dispersal across landscapes."
+    ],
+    "econ": [
+      "Bark, leaves and roots are used in traditional medicine.",
+      "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ]
+  },
+  "46": {
+    "name": "Banyan",
+    "sci": "Ficus benghalensis",
+    "fam": "Moraceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 457.2,
+    "height": 14.630400000000002,
+    "dbh": 145.5,
+    "age": 112,
+    "carbon": 4844.72,
+    "eco": [
+      "Aerial roots and vast canopy create microhabitats for birds, insects and epiphytes.",
+      "One of the largest canopy-forming trees, significantly moderating local temperature and humidity."
+    ],
+    "econ": [
+      "Timber and fibrous roots are used in local crafts and rope-making.",
+      "Provides shade for markets and gathering spaces, indirectly supporting local economies."
+    ]
+  },
+  "47": {
+    "name": "Jamun",
+    "sci": "Syzygium cumini",
+    "fam": "Myrtaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 342.9,
+    "height": 15.24,
+    "dbh": 109.1,
+    "age": 78,
+    "carbon": 3384.55,
+    "eco": [
+      "Fruit supports birds and mammals, aiding seed dispersal.",
+      "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
+    ],
+    "econ": [
+      "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
+      "Timber is used for construction and furniture in rural areas."
+    ]
+  },
+  "48": {
+    "name": "Jamun",
+    "sci": "Syzygium cumini",
+    "fam": "Myrtaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 335.28000000000003,
+    "height": 16.154400000000003,
+    "dbh": 106.7,
+    "age": 76,
+    "carbon": 3428.85,
+    "eco": [
+      "Fruit supports birds and mammals, aiding seed dispersal.",
+      "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
+    ],
+    "econ": [
+      "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
+      "Timber is used for construction and furniture in rural areas."
+    ]
+  }
+};
+
+function esc(s){
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function renderCard(id, t){
+  return `
+    <div class="masthead">
+      <div class="eyebrow">Campus Tree Directory</div>
+      <h1>${esc(t.name)}</h1>
+    </div>
+    <div class="card" data-id="${esc(id)}">
+      <p class="common">${esc(t.name)}</p>
+      <p class="sci">${esc(t.sci)}</p>
+      <p class="fam">(${esc(t.fam)})</p>
+      <hr class="divider">
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num">${esc(String(t.age))}</div>
+          <div class="lbl">Years Age</div>
+        </div>
+        <div class="stat">
+          <div class="num">${t.carbon.toFixed(2)} <sup>kg C</sup></div>
+          <div class="lbl">Total Carbon Stock</div>
+        </div>
+      </div>
+      <dl>
+        <div class="row"><dt>Individual Number</dt><dd>${esc(id)}</dd></div>
+        <div class="row"><dt>Family</dt><dd>${esc(t.fam)}</dd></div>
+        <div class="row"><dt>Native Region</dt><dd>${esc(t.region)}</dd></div>
+        <div class="row"><dt>IUCN Status</dt><dd>${esc(t.iucn)}</dd></div>
+      </dl>
+      <div class="section-title">Ecological Importance</div>
+      <ul class="facts">${t.eco.map(f=>'<li>'+esc(f)+'</li>').join('')}</ul>
+      <div class="section-title">Economic Importance</div>
+      <ul class="facts">${t.econ.map(f=>'<li>'+esc(f)+'</li>').join('')}</ul>
+    </div>
+    <a class="back-link" href="${location.pathname}">&larr; View all trees</a>
+  `;
+}
+
+function renderIndex(){
+  const ids = Object.keys(TREES);
+  let body;
+  if(ids.length === 0){
+    body = '<div class="empty">No trees added yet. Check back soon — this directory grows as each tree on campus gets tagged.</div>';
+  }else{
+    body = '<div class="index-list">' + ids.map(id=>{
+      const t = TREES[id];
+      return `<a class="index-item" href="?id=${encodeURIComponent(id)}">
+        <div class="name">${esc(t.name)}</div>
+        <div class="sci">${esc(t.sci)}</div>
+        <div class="meta">No. ${esc(id)} &middot; ${esc(String(t.age))} yrs &middot; ${t.carbon.toFixed(1)} kg C</div>
+      </a>`;
+    }).join('') + '</div>';
+  }
+  return `
+    <div class="masthead">
+      <div class="eyebrow">Campus Tree Directory</div>
+      <h1>All Trees</h1>
+      <p>Scan a plaque, or browse the full list below</p>
+    </div>
+    ${body}
+  `;
+}
+
+const params = new URLSearchParams(location.search);
+const id = params.get('id');
+const app = document.getElementById('app');
+
+if(id && TREES[id]){
+  app.innerHTML = renderCard(id, TREES[id]);
+}else if(id){
+  app.innerHTML = `
+    <div class="masthead">
+      <div class="eyebrow">Campus Tree Directory</div>
+      <h1>Tree not found</h1>
+      <p>No record exists for ID "${esc(id)}" yet.</p>
+    </div>
+    <a class="back-link" href="${location.pathname}">&larr; View all trees</a>
+  `;
+}else{
+  app.innerHTML = renderIndex();
+}
+</script>
+</body>
+</html>
