@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Campus Tree Directory</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spectral:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500&display=swap');
 
   :root{
     --paper:#f1ede2;
@@ -179,7 +179,15 @@
     margin:20px 0 8px;
   }
   ul.facts{margin:0 0 4px;padding-left:20px;}
-  ul.facts li{font-size:14.5px;margin-bottom:8px;line-height:1.5;}
+  ul.facts li{font-size:14.5px;margin-bottom:12px;line-height:1.5;}
+  .hi{
+    display:block;
+    font-family:'Noto Sans Devanagari', 'Spectral', sans-serif;
+    font-size:14px;
+    color:var(--bark);
+    margin-top:4px;
+    line-height:1.6;
+  }
 
   .heritage-box{
     margin-top:22px;
@@ -240,6 +248,14 @@ const TREES = {
     "econ": [
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
+    ],
+    "eco_hi": [
+      "फल पक्षियों और स्तनधारियों को भोजन देता है, जिससे बीज फैलने में मदद मिलती है।",
+      "घनी सदाबहार छतरी नदी किनारों और सड़कों के किनारे मिट्टी को स्थिर रखने में मदद करती है।"
+    ],
+    "econ_hi": [
+      "फल ताज़ा बेचा जाता है और जूस, सिरका तथा पारंपरिक औषधि में उपयोग होता है।",
+      "इसकी लकड़ी ग्रामीण क्षेत्रों में निर्माण और फर्नीचर के लिए उपयोग होती है।"
     ]
   },
   "2": {
@@ -260,6 +276,14 @@ const TREES = {
     "econ": [
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
+    ],
+    "eco_hi": [
+      "फल पक्षियों और स्तनधारियों को भोजन देता है, जिससे बीज फैलने में मदद मिलती है।",
+      "घनी सदाबहार छतरी नदी किनारों और सड़कों के किनारे मिट्टी को स्थिर रखने में मदद करती है।"
+    ],
+    "econ_hi": [
+      "फल ताज़ा बेचा जाता है और जूस, सिरका तथा पारंपरिक औषधि में उपयोग होता है।",
+      "इसकी लकड़ी ग्रामीण क्षेत्रों में निर्माण और फर्नीचर के लिए उपयोग होती है।"
     ]
   },
   "3": {
@@ -280,6 +304,14 @@ const TREES = {
     "econ": [
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
+    ],
+    "eco_hi": [
+      "फल पक्षियों और स्तनधारियों को भोजन देता है, जिससे बीज फैलने में मदद मिलती है।",
+      "घनी सदाबहार छतरी नदी किनारों और सड़कों के किनारे मिट्टी को स्थिर रखने में मदद करती है।"
+    ],
+    "econ_hi": [
+      "फल ताज़ा बेचा जाता है और जूस, सिरका तथा पारंपरिक औषधि में उपयोग होता है।",
+      "इसकी लकड़ी ग्रामीण क्षेत्रों में निर्माण और फर्नीचर के लिए उपयोग होती है।"
     ]
   },
   "4": {
@@ -300,6 +332,14 @@ const TREES = {
     "econ": [
       "Bark, leaves and roots are used in traditional medicine.",
       "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ],
+    "eco_hi": [
+      "विशाल छतरी अच्छी छाया देती है और आसपास के वातावरण को ठंडा रखती है।",
+      "फल पक्षियों और चमगादड़ों के लिए मुख्य भोजन है, जिससे बीज दूर-दूर तक फैलते हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल, पत्तियाँ और जड़ें पारंपरिक औषधि में उपयोग होती हैं।",
+      "धार्मिक और सांस्कृतिक महत्व के कारण इसे व्यापक रूप से लगाया जाता है, जिससे मंदिरों और सार्वजनिक स्थलों के पास इसका संरक्षण होता है।"
     ]
   },
   "5": {
@@ -320,6 +360,14 @@ const TREES = {
     "econ": [
       "Bark, leaves and roots are used in traditional medicine.",
       "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ],
+    "eco_hi": [
+      "विशाल छतरी अच्छी छाया देती है और आसपास के वातावरण को ठंडा रखती है।",
+      "फल पक्षियों और चमगादड़ों के लिए मुख्य भोजन है, जिससे बीज दूर-दूर तक फैलते हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल, पत्तियाँ और जड़ें पारंपरिक औषधि में उपयोग होती हैं।",
+      "धार्मिक और सांस्कृतिक महत्व के कारण इसे व्यापक रूप से लगाया जाता है, जिससे मंदिरों और सार्वजनिक स्थलों के पास इसका संरक्षण होता है।"
     ]
   },
   "6": {
@@ -340,6 +388,14 @@ const TREES = {
     "econ": [
       "Bark, leaves and roots are used in traditional medicine.",
       "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ],
+    "eco_hi": [
+      "विशाल छतरी अच्छी छाया देती है और आसपास के वातावरण को ठंडा रखती है।",
+      "फल पक्षियों और चमगादड़ों के लिए मुख्य भोजन है, जिससे बीज दूर-दूर तक फैलते हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल, पत्तियाँ और जड़ें पारंपरिक औषधि में उपयोग होती हैं।",
+      "धार्मिक और सांस्कृतिक महत्व के कारण इसे व्यापक रूप से लगाया जाता है, जिससे मंदिरों और सार्वजनिक स्थलों के पास इसका संरक्षण होता है।"
     ]
   },
   "10": {
@@ -360,6 +416,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "11": {
@@ -380,6 +444,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "12": {
@@ -400,6 +472,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "13": {
@@ -420,6 +500,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "14": {
@@ -440,6 +528,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "15": {
@@ -460,6 +556,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "16": {
@@ -480,6 +584,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "17": {
@@ -500,6 +612,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "18": {
@@ -520,6 +640,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "19": {
@@ -540,6 +668,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "20": {
@@ -560,6 +696,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "21": {
@@ -580,6 +724,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "22": {
@@ -600,6 +752,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "23": {
@@ -620,6 +780,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "24": {
@@ -640,6 +808,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "25": {
@@ -660,6 +836,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "26": {
@@ -680,6 +864,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "27": {
@@ -700,6 +892,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "28": {
@@ -720,6 +920,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "29": {
@@ -740,6 +948,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "30": {
@@ -760,6 +976,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "31": {
@@ -780,6 +1004,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "32": {
@@ -800,6 +1032,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "33": {
@@ -820,6 +1060,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "34": {
@@ -840,6 +1088,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "35": {
@@ -860,6 +1116,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "36": {
@@ -880,6 +1144,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "37": {
@@ -900,6 +1172,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "38": {
@@ -920,6 +1200,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "39": {
@@ -940,6 +1228,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "40": {
@@ -961,7 +1257,16 @@ const TREES = {
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
     ],
-    "heritage": "At an estimated 63 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
+    "heritage": "At an estimated 63 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915.",
+    "eco_hi": [
+      "फल पक्षियों और स्तनधारियों को भोजन देता है, जिससे बीज फैलने में मदद मिलती है।",
+      "घनी सदाबहार छतरी नदी किनारों और सड़कों के किनारे मिट्टी को स्थिर रखने में मदद करती है।"
+    ],
+    "econ_hi": [
+      "फल ताज़ा बेचा जाता है और जूस, सिरका तथा पारंपरिक औषधि में उपयोग होता है।",
+      "इसकी लकड़ी ग्रामीण क्षेत्रों में निर्माण और फर्नीचर के लिए उपयोग होती है।"
+    ],
+    "heritage_hi": "लगभग 63 वर्ष पुराने इस वृक्ष को इसकी आयु के सम्मान में सोनीपत वन विभाग द्वारा विशेष \"पेंशन\" प्रदान की गई है — यह एक दुर्लभ और उल्लेखनीय सम्मान है। यह कैंपस के वयोवृद्ध वृक्षों में से एक है, जो 1915 से चले आ रहे संस्था के लंबे इतिहास का हिस्सा है।"
   },
   "41": {
     "name": "Jamun",
@@ -982,7 +1287,16 @@ const TREES = {
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
     ],
-    "heritage": "At an estimated 80 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
+    "heritage": "At an estimated 80 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915.",
+    "eco_hi": [
+      "फल पक्षियों और स्तनधारियों को भोजन देता है, जिससे बीज फैलने में मदद मिलती है।",
+      "घनी सदाबहार छतरी नदी किनारों और सड़कों के किनारे मिट्टी को स्थिर रखने में मदद करती है।"
+    ],
+    "econ_hi": [
+      "फल ताज़ा बेचा जाता है और जूस, सिरका तथा पारंपरिक औषधि में उपयोग होता है।",
+      "इसकी लकड़ी ग्रामीण क्षेत्रों में निर्माण और फर्नीचर के लिए उपयोग होती है।"
+    ],
+    "heritage_hi": "लगभग 80 वर्ष पुराने इस वृक्ष को इसकी आयु के सम्मान में सोनीपत वन विभाग द्वारा विशेष \"पेंशन\" प्रदान की गई है — यह एक दुर्लभ और उल्लेखनीय सम्मान है। यह कैंपस के वयोवृद्ध वृक्षों में से एक है, जो 1915 से चले आ रहे संस्था के लंबे इतिहास का हिस्सा है।"
   },
   "43": {
     "name": "Neem",
@@ -1003,7 +1317,16 @@ const TREES = {
       "Provides economic value through seeds (oil, biopesticide), leaves, and timber.",
       "Used as windbreaks and for soil improvement, reducing land-degradation costs."
     ],
-    "heritage": "At an estimated 84 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
+    "heritage": "At an estimated 84 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915.",
+    "eco_hi": [
+      "मिट्टी की उर्वरता और नमी बनाए रखने में सुधार करता है, तथा कठोर व खुले वातावरण में छाया और आश्रय देता है।",
+      "विभिन्न प्रजातियों के लिए आवास और भोजन देकर जैव विविधता को सहारा देता है, और एक प्राकृतिक, गैर-विषैले कीटनाशक के रूप में कार्य करता है।"
+    ],
+    "econ_hi": [
+      "बीज (तेल, कीटनाशक), पत्तियों और लकड़ी के माध्यम से आर्थिक मूल्य प्रदान करता है।",
+      "हवा को रोकने और मिट्टी सुधारने के लिए उपयोग होता है, जिससे भूमि क्षरण की लागत कम होती है।"
+    ],
+    "heritage_hi": "लगभग 84 वर्ष पुराने इस वृक्ष को इसकी आयु के सम्मान में सोनीपत वन विभाग द्वारा विशेष \"पेंशन\" प्रदान की गई है — यह एक दुर्लभ और उल्लेखनीय सम्मान है। यह कैंपस के वयोवृद्ध वृक्षों में से एक है, जो 1915 से चले आ रहे संस्था के लंबे इतिहास का हिस्सा है।"
   },
   "44": {
     "name": "Peepal",
@@ -1023,6 +1346,14 @@ const TREES = {
     "econ": [
       "Bark, leaves and roots are used in traditional medicine.",
       "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
+    ],
+    "eco_hi": [
+      "विशाल छतरी अच्छी छाया देती है और आसपास के वातावरण को ठंडा रखती है।",
+      "फल पक्षियों और चमगादड़ों के लिए मुख्य भोजन है, जिससे बीज दूर-दूर तक फैलते हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल, पत्तियाँ और जड़ें पारंपरिक औषधि में उपयोग होती हैं।",
+      "धार्मिक और सांस्कृतिक महत्व के कारण इसे व्यापक रूप से लगाया जाता है, जिससे मंदिरों और सार्वजनिक स्थलों के पास इसका संरक्षण होता है।"
     ]
   },
   "45": {
@@ -1044,7 +1375,16 @@ const TREES = {
       "Bark, leaves and roots are used in traditional medicine.",
       "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
     ],
-    "heritage": "At an estimated 100 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It is one of the oldest trees on campus, over a century old."
+    "heritage": "At an estimated 100 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It is one of the oldest trees on campus, over a century old.",
+    "eco_hi": [
+      "विशाल छतरी अच्छी छाया देती है और आसपास के वातावरण को ठंडा रखती है।",
+      "फल पक्षियों और चमगादड़ों के लिए मुख्य भोजन है, जिससे बीज दूर-दूर तक फैलते हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल, पत्तियाँ और जड़ें पारंपरिक औषधि में उपयोग होती हैं।",
+      "धार्मिक और सांस्कृतिक महत्व के कारण इसे व्यापक रूप से लगाया जाता है, जिससे मंदिरों और सार्वजनिक स्थलों के पास इसका संरक्षण होता है।"
+    ],
+    "heritage_hi": "लगभग 100 वर्ष पुराने इस वृक्ष को इसकी आयु के सम्मान में सोनीपत वन विभाग द्वारा विशेष \"पेंशन\" प्रदान की गई है — यह एक दुर्लभ और उल्लेखनीय सम्मान है। यह कैंपस के सबसे पुराने वृक्षों में से एक है, सौ वर्ष से भी अधिक पुराना।"
   },
   "46": {
     "name": "Banyan",
@@ -1065,7 +1405,16 @@ const TREES = {
       "Timber and fibrous roots are used in local crafts and rope-making.",
       "Provides shade for markets and gathering spaces, indirectly supporting local economies."
     ],
-    "heritage": "At an estimated 112 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It is among the oldest trees on campus, believed to date back to the institution's founding in 1915."
+    "heritage": "At an estimated 112 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It is among the oldest trees on campus, believed to date back to the institution's founding in 1915.",
+    "eco_hi": [
+      "हवाई जड़ें और विशाल छतरी पक्षियों, कीड़ों और अधिपादपों के लिए छोटे आवास बनाती हैं।",
+      "यह सबसे बड़ी छतरी बनाने वाले वृक्षों में से एक है, जो स्थानीय तापमान और नमी को काफी हद तक नियंत्रित करता है।"
+    ],
+    "econ_hi": [
+      "इसकी लकड़ी और रेशेदार जड़ें स्थानीय शिल्प और रस्सी बनाने में उपयोग होती हैं।",
+      "बाज़ारों और सामुदायिक स्थलों को छाया देता है, जिससे अप्रत्यक्ष रूप से स्थानीय अर्थव्यवस्था को सहारा मिलता है।"
+    ],
+    "heritage_hi": "लगभग 112 वर्ष पुराने इस वृक्ष को इसकी आयु के सम्मान में सोनीपत वन विभाग द्वारा विशेष \"पेंशन\" प्रदान की गई है — यह एक दुर्लभ और उल्लेखनीय सम्मान है। यह कैंपस के सबसे पुराने वृक्षों में से एक है, माना जाता है कि यह संस्था की स्थापना (1915) के समय से मौजूद है।"
   },
   "47": {
     "name": "Jamun",
@@ -1086,7 +1435,16 @@ const TREES = {
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
     ],
-    "heritage": "At an estimated 78 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
+    "heritage": "At an estimated 78 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915.",
+    "eco_hi": [
+      "फल पक्षियों और स्तनधारियों को भोजन देता है, जिससे बीज फैलने में मदद मिलती है।",
+      "घनी सदाबहार छतरी नदी किनारों और सड़कों के किनारे मिट्टी को स्थिर रखने में मदद करती है।"
+    ],
+    "econ_hi": [
+      "फल ताज़ा बेचा जाता है और जूस, सिरका तथा पारंपरिक औषधि में उपयोग होता है।",
+      "इसकी लकड़ी ग्रामीण क्षेत्रों में निर्माण और फर्नीचर के लिए उपयोग होती है।"
+    ],
+    "heritage_hi": "लगभग 78 वर्ष पुराने इस वृक्ष को इसकी आयु के सम्मान में सोनीपत वन विभाग द्वारा विशेष \"पेंशन\" प्रदान की गई है — यह एक दुर्लभ और उल्लेखनीय सम्मान है। यह कैंपस के वयोवृद्ध वृक्षों में से एक है, जो 1915 से चले आ रहे संस्था के लंबे इतिहास का हिस्सा है।"
   },
   "48": {
     "name": "Jamun",
@@ -1107,7 +1465,16 @@ const TREES = {
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
     ],
-    "heritage": "At an estimated 76 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
+    "heritage": "At an estimated 76 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915.",
+    "eco_hi": [
+      "फल पक्षियों और स्तनधारियों को भोजन देता है, जिससे बीज फैलने में मदद मिलती है।",
+      "घनी सदाबहार छतरी नदी किनारों और सड़कों के किनारे मिट्टी को स्थिर रखने में मदद करती है।"
+    ],
+    "econ_hi": [
+      "फल ताज़ा बेचा जाता है और जूस, सिरका तथा पारंपरिक औषधि में उपयोग होता है।",
+      "इसकी लकड़ी ग्रामीण क्षेत्रों में निर्माण और फर्नीचर के लिए उपयोग होती है।"
+    ],
+    "heritage_hi": "लगभग 76 वर्ष पुराने इस वृक्ष को इसकी आयु के सम्मान में सोनीपत वन विभाग द्वारा विशेष \"पेंशन\" प्रदान की गई है — यह एक दुर्लभ और उल्लेखनीय सम्मान है। यह कैंपस के वयोवृद्ध वृक्षों में से एक है, जो 1915 से चले आ रहे संस्था के लंबे इतिहास का हिस्सा है।"
   },
   "7": {
     "name": "Bel Patra",
@@ -1127,6 +1494,14 @@ const TREES = {
     "econ": [
       "Fruit pulp is used for juice, sherbet and traditional preserves, and is a valued Ayurvedic remedy for digestive ailments.",
       "Leaves and fruit hold religious significance in Hindu worship, adding cultural value alongside its commercial uses."
+    ],
+    "eco_hi": [
+      "फल और फूल परागणकों तथा फल खाने वाले पक्षियों व स्तनधारियों (जैसे बंदर और भालू) को सहारा देते हैं।",
+      "यह खराब, क्षतिग्रस्त और खारी मिट्टी को सहन कर लेता है, जिससे यह बंजर भूमि को स्थिर करने में उपयोगी है।"
+    ],
+    "econ_hi": [
+      "फल के गूदे से जूस, शरबत और पारंपरिक मुरब्बा बनाया जाता है, और यह पाचन संबंधी समस्याओं के लिए एक मूल्यवान आयुर्वेदिक औषधि है।",
+      "पत्तियाँ और फल हिंदू पूजा में धार्मिक महत्व रखते हैं, जिससे व्यावसायिक उपयोग के साथ-साथ सांस्कृतिक मूल्य भी जुड़ता है।"
     ]
   },
   "8": {
@@ -1147,6 +1522,14 @@ const TREES = {
     "econ": [
       "Unripe fruit is pickled and sold as a vegetable across North India, giving it local commercial value.",
       "Bark, leaves and fruit have traditional medicinal uses for coughs and digestive complaints."
+    ],
+    "eco_hi": [
+      "फल पक्षियों और चमगादड़ों द्वारा खाया जाता है, जिससे बीज फैलते हैं, और यह वृक्ष शुष्क पर्णपाती वनों में छाया देता है।",
+      "गहरी जड़ प्रणाली शुष्क और अर्ध-शुष्क क्षेत्रों में मिट्टी को स्थिर रखने में मदद करती है।"
+    ],
+    "econ_hi": [
+      "कच्चे फल का अचार बनाकर उत्तर भारत में सब्ज़ी के रूप में बेचा जाता है, जिससे इसका स्थानीय व्यावसायिक मूल्य है।",
+      "छाल, पत्तियाँ और फल खांसी तथा पाचन संबंधी समस्याओं के लिए पारंपरिक औषधीय उपयोग रखते हैं।"
     ]
   },
   "9": {
@@ -1167,6 +1550,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in Ayurvedic heart medicine, supporting the herbal industry.",
       "Timber is used in agricultural implements and construction."
+    ],
+    "eco_hi": [
+      "यह नदी किनारों पर उगता है, मिट्टी को स्थिर रखता है और कटाव को कम करता है।",
+      "इसकी छाल और पत्तियाँ कई प्रकार के कीड़ों और पक्षियों को सहारा देती हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल आयुर्वेदिक हृदय औषधि में व्यापक रूप से उपयोग होती है, जिससे जड़ी-बूटी उद्योग को सहारा मिलता है।",
+      "इसकी लकड़ी कृषि उपकरणों और निर्माण कार्य में उपयोग होती है।"
     ]
   },
   "42": {
@@ -1187,6 +1578,14 @@ const TREES = {
     "econ": [
       "Widely planted as a fast-growing shade and timber tree; wood is used in construction and furniture.",
       "Leaves and pods provide high-protein fodder for livestock in semi-arid regions."
+    ],
+    "eco_hi": [
+      "नाइट्रोजन स्थिर करने वाली जड़ें मिट्टी की उर्वरता बढ़ाती हैं, जो क्षतिग्रस्त भूमि सुधार और कृषि-वानिकी के लिए मूल्यवान है।",
+      "सुगंधित फूल परागणकों को आकर्षित करते हैं, और यह वृक्ष पशुओं के लिए एक महत्वपूर्ण चारा स्रोत है।"
+    ],
+    "econ_hi": [
+      "इसे तेज़ी से बढ़ने वाले छाया और लकड़ी के वृक्ष के रूप में व्यापक रूप से लगाया जाता है; लकड़ी निर्माण और फर्नीचर में उपयोग होती है।",
+      "पत्तियाँ और फलियाँ अर्ध-शुष्क क्षेत्रों में पशुओं के लिए उच्च-प्रोटीन चारा प्रदान करती हैं।"
     ]
   },
   "49": {
@@ -1207,6 +1606,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "50": {
@@ -1227,6 +1634,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "51": {
@@ -1247,6 +1662,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "52": {
@@ -1267,6 +1690,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "53": {
@@ -1287,6 +1718,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "54": {
@@ -1307,6 +1746,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "55": {
@@ -1327,6 +1774,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "56": {
@@ -1347,6 +1802,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "57": {
@@ -1367,6 +1830,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   },
   "58": {
@@ -1387,6 +1858,14 @@ const TREES = {
     "econ": [
       "Bark is widely used in traditional medicine, driving demand and wild overharvesting.",
       "Popular ornamental and shade tree in gardens and temple courtyards."
+    ],
+    "eco_hi": [
+      "यह निचली परत का वृक्ष है जो वन-भूमि की जैव विविधता को सहारा देता है और मिट्टी को स्थिर रखता है।",
+      "फूल परागणकों को मकरंद देते हैं; जंगली रूप में अधिक दोहन के कारण, उगाए गए पेड़ पारिस्थितिक रूप से महत्वपूर्ण हो गए हैं।"
+    ],
+    "econ_hi": [
+      "इसकी छाल पारंपरिक औषधि में व्यापक रूप से उपयोग होती है, जिससे मांग बढ़ती है और जंगली पेड़ों का अत्यधिक दोहन होता है।",
+      "बगीचों और मंदिर परिसरों में यह एक लोकप्रिय सजावटी और छाया देने वाला वृक्ष है।"
     ]
   }
 };
@@ -1425,13 +1904,14 @@ function renderCard(id, t){
         <div class="row"><dt>IUCN Status</dt><dd>${esc(t.iucn)}</dd></div>
       </dl>
       <div class="section-title">Ecological Importance</div>
-      <ul class="facts">${t.eco.map(f=>'<li>'+esc(f)+'</li>').join('')}</ul>
+      <ul class="facts">${t.eco.map((f,i)=>'<li>'+esc(f)+'<span class="hi">'+esc(t.eco_hi[i])+'</span></li>').join('')}</ul>
       <div class="section-title">Economic Importance</div>
-      <ul class="facts">${t.econ.map(f=>'<li>'+esc(f)+'</li>').join('')}</ul>
+      <ul class="facts">${t.econ.map((f,i)=>'<li>'+esc(f)+'<span class="hi">'+esc(t.econ_hi[i])+'</span></li>').join('')}</ul>
       ${t.heritage ? `
       <div class="heritage-box">
         <div class="heritage-label">Heritage Recognition</div>
         <p>${esc(t.heritage)}</p>
+        <p class="hi" style="margin-top:8px;">${esc(t.heritage_hi)}</p>
       </div>` : ''}
     </div>
   `;
