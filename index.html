@@ -181,6 +181,28 @@
   ul.facts{margin:0 0 4px;padding-left:20px;}
   ul.facts li{font-size:14.5px;margin-bottom:8px;line-height:1.5;}
 
+  .heritage-box{
+    margin-top:22px;
+    padding:16px 18px;
+    background:rgba(166,124,61,0.08);
+    border:1px solid var(--gold);
+    border-left:4px solid var(--gold);
+  }
+  .heritage-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:8px;
+  }
+  .heritage-box p{
+    margin:0;
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--ink);
+  }
+
   .back-link{
     display:inline-block;
     margin-top:24px;
@@ -926,11 +948,11 @@ const TREES = {
     "fam": "Myrtaceae",
     "region": "Indian subcontinent",
     "iucn": "Least Concern",
-    "girth": 254.0,
-    "height": 15.24,
-    "dbh": 80.9,
-    "age": 58,
-    "carbon": 1884.04,
+    "girth": 276.0,
+    "height": 12.192,
+    "dbh": 87.9,
+    "age": 63,
+    "carbon": 1782.07,
     "eco": [
       "Fruit supports birds and mammals, aiding seed dispersal.",
       "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
@@ -938,7 +960,8 @@ const TREES = {
     "econ": [
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
-    ]
+    ],
+    "heritage": "At an estimated 63 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
   },
   "41": {
     "name": "Jamun",
@@ -946,11 +969,11 @@ const TREES = {
     "fam": "Myrtaceae",
     "region": "Indian subcontinent",
     "iucn": "Least Concern",
-    "girth": 262.89,
+    "girth": 350.0,
     "height": 12.8016,
-    "dbh": 83.7,
-    "age": 60,
-    "carbon": 1699.61,
+    "dbh": 111.4,
+    "age": 80,
+    "carbon": 2971.47,
     "eco": [
       "Fruit supports birds and mammals, aiding seed dispersal.",
       "Dense evergreen canopy helps stabilize soil along riverbanks and roadsides."
@@ -958,7 +981,8 @@ const TREES = {
     "econ": [
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
-    ]
+    ],
+    "heritage": "At an estimated 80 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
   },
   "43": {
     "name": "Neem",
@@ -966,11 +990,11 @@ const TREES = {
     "fam": "Meliaceae",
     "region": "Indian subcontinent",
     "iucn": "Least Concern",
-    "girth": 355.6,
+    "girth": 393.7,
     "height": 12.192,
-    "dbh": 113.2,
-    "age": 75,
-    "carbon": 3054.03,
+    "dbh": 125.3,
+    "age": 84,
+    "carbon": 3725.28,
     "eco": [
       "Improves soil fertility and moisture retention, and provides shade and shelter in harsh, exposed environments.",
       "Supports biodiversity as habitat and food for various species, and acts as a natural, non-toxic biopesticide."
@@ -978,7 +1002,8 @@ const TREES = {
     "econ": [
       "Provides economic value through seeds (oil, biopesticide), leaves, and timber.",
       "Used as windbreaks and for soil improvement, reducing land-degradation costs."
-    ]
+    ],
+    "heritage": "At an estimated 84 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
   },
   "44": {
     "name": "Peepal",
@@ -1018,7 +1043,8 @@ const TREES = {
     "econ": [
       "Bark, leaves and roots are used in traditional medicine.",
       "Widely planted for religious and cultural significance, encouraging conservation near temples and public spaces."
-    ]
+    ],
+    "heritage": "At an estimated 100 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It is one of the oldest trees on campus, over a century old."
   },
   "46": {
     "name": "Banyan",
@@ -1038,7 +1064,8 @@ const TREES = {
     "econ": [
       "Timber and fibrous roots are used in local crafts and rope-making.",
       "Provides shade for markets and gathering spaces, indirectly supporting local economies."
-    ]
+    ],
+    "heritage": "At an estimated 112 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It is among the oldest trees on campus, believed to date back to the institution's founding in 1915."
   },
   "47": {
     "name": "Jamun",
@@ -1058,7 +1085,8 @@ const TREES = {
     "econ": [
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
-    ]
+    ],
+    "heritage": "At an estimated 78 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
   },
   "48": {
     "name": "Jamun",
@@ -1078,6 +1106,87 @@ const TREES = {
     "econ": [
       "Fruit is commercially sold fresh and used in juices, vinegar and traditional medicine.",
       "Timber is used for construction and furniture in rural areas."
+    ],
+    "heritage": "At an estimated 76 years old, this tree has been granted a special \"pension\" by the Sonipat Forest Department in recognition of its age — a rare and notable distinction. It stands among the veteran trees of the campus, part of the institution's long history since 1915."
+  },
+  "7": {
+    "name": "Bel Patra",
+    "sci": "Aegle marmelos",
+    "fam": "Rutaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Near Threatened",
+    "girth": 63.5,
+    "height": 10.668000000000001,
+    "dbh": 20.2,
+    "age": 20,
+    "carbon": 88.86,
+    "eco": [
+      "Fruit and flowers support pollinators and frugivorous birds and mammals such as monkeys and bears.",
+      "Tolerates poor, degraded and saline soils, making it useful for stabilizing marginal land."
+    ],
+    "econ": [
+      "Fruit pulp is used for juice, sherbet and traditional preserves, and is a valued Ayurvedic remedy for digestive ailments.",
+      "Leaves and fruit hold religious significance in Hindu worship, adding cultural value alongside its commercial uses."
+    ]
+  },
+  "8": {
+    "name": "Lasoda",
+    "sci": "Cordia dichotoma",
+    "fam": "Cordiaceae (Boraginaceae)",
+    "region": "Indian subcontinent & Southeast Asia",
+    "iucn": "Least Concern",
+    "girth": 88.9,
+    "height": 11.277600000000001,
+    "dbh": 28.3,
+    "age": 19,
+    "carbon": 140.05,
+    "eco": [
+      "Fruit is eaten by birds and bats, aiding seed dispersal, and the tree provides shade in dry deciduous forests.",
+      "Deep root system helps stabilize soil in dry and semi-arid regions."
+    ],
+    "econ": [
+      "Unripe fruit is pickled and sold as a vegetable across North India, giving it local commercial value.",
+      "Bark, leaves and fruit have traditional medicinal uses for coughs and digestive complaints."
+    ]
+  },
+  "9": {
+    "name": "Arjun",
+    "sci": "Terminalia arjuna",
+    "fam": "Combretaceae",
+    "region": "Indian subcontinent",
+    "iucn": "Least Concern",
+    "girth": 63.5,
+    "height": 11.277600000000001,
+    "dbh": 20.2,
+    "age": 17,
+    "carbon": 100.84,
+    "eco": [
+      "Grows along riverbanks, stabilizing soil and reducing erosion.",
+      "Bark and leaves support a range of insect and bird species."
+    ],
+    "econ": [
+      "Bark is widely used in Ayurvedic heart medicine, supporting the herbal industry.",
+      "Timber is used in agricultural implements and construction."
+    ]
+  },
+  "42": {
+    "name": "Siris",
+    "sci": "Albizia lebbeck",
+    "fam": "Fabaceae",
+    "region": "Indian subcontinent & Myanmar",
+    "iucn": "Least Concern",
+    "girth": 170.18,
+    "height": 13.716000000000001,
+    "dbh": 54.2,
+    "age": 27,
+    "carbon": 719.45,
+    "eco": [
+      "Nitrogen-fixing roots improve soil fertility, valuable for degraded-land restoration and agroforestry.",
+      "Fragrant flowers attract pollinators, and the tree is an important fodder source for livestock."
+    ],
+    "econ": [
+      "Widely planted as a fast-growing shade and timber tree; wood is used in construction and furniture.",
+      "Leaves and pods provide high-protein fodder for livestock in semi-arid regions."
     ]
   }
 };
@@ -1119,6 +1228,11 @@ function renderCard(id, t){
       <ul class="facts">${t.eco.map(f=>'<li>'+esc(f)+'</li>').join('')}</ul>
       <div class="section-title">Economic Importance</div>
       <ul class="facts">${t.econ.map(f=>'<li>'+esc(f)+'</li>').join('')}</ul>
+      ${t.heritage ? `
+      <div class="heritage-box">
+        <div class="heritage-label">Heritage Recognition</div>
+        <p>${esc(t.heritage)}</p>
+      </div>` : ''}
     </div>
   `;
 }
