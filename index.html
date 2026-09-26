@@ -179,14 +179,21 @@
     margin:20px 0 8px;
   }
   ul.facts{margin:0 0 4px;padding-left:20px;}
-  ul.facts li{font-size:14.5px;margin-bottom:12px;line-height:1.5;}
-  .hi{
-    display:block;
+  ul.facts li{font-size:14.5px;margin-bottom:14px;line-height:1.5;}
+  .hi-primary{
     font-family:'Noto Sans Devanagari', 'Spectral', sans-serif;
-    font-size:14px;
+    font-size:14.5px;
+    color:var(--ink);
+    line-height:1.7;
+  }
+  .en-sub{
+    display:block;
+    font-family:'Spectral', Georgia, serif;
+    font-style:italic;
+    font-size:14.5px;
     color:var(--bark);
-    margin-top:4px;
-    line-height:1.6;
+    margin-top:5px;
+    line-height:1.5;
   }
 
   .heritage-box{
@@ -1903,15 +1910,15 @@ function renderCard(id, t){
         <div class="row"><dt>Native Region</dt><dd>${esc(t.region)}</dd></div>
         <div class="row"><dt>IUCN Status</dt><dd>${esc(t.iucn)}</dd></div>
       </dl>
-      <div class="section-title">Ecological Importance</div>
-      <ul class="facts">${t.eco.map((f,i)=>'<li>'+esc(f)+'<span class="hi">'+esc(t.eco_hi[i])+'</span></li>').join('')}</ul>
-      <div class="section-title">Economic Importance</div>
-      <ul class="facts">${t.econ.map((f,i)=>'<li>'+esc(f)+'<span class="hi">'+esc(t.econ_hi[i])+'</span></li>').join('')}</ul>
+      <div class="section-title">Ecological Importance / पारिस्थितिक महत्व</div>
+      <ul class="facts">${t.eco.map((f,i)=>'<li class="hi-primary">'+esc(t.eco_hi[i])+'<span class="en-sub">'+esc(f)+'</span></li>').join('')}</ul>
+      <div class="section-title">Economic Importance / आर्थिक महत्व</div>
+      <ul class="facts">${t.econ.map((f,i)=>'<li class="hi-primary">'+esc(t.econ_hi[i])+'<span class="en-sub">'+esc(f)+'</span></li>').join('')}</ul>
       ${t.heritage ? `
       <div class="heritage-box">
-        <div class="heritage-label">Heritage Recognition</div>
-        <p>${esc(t.heritage)}</p>
-        <p class="hi" style="margin-top:8px;">${esc(t.heritage_hi)}</p>
+        <div class="heritage-label">Heritage Recognition / विशेष सम्मान</div>
+        <p class="hi-primary" style="margin:0;">${esc(t.heritage_hi)}</p>
+        <p class="en-sub" style="margin-top:8px;">${esc(t.heritage)}</p>
       </div>` : ''}
     </div>
   `;
