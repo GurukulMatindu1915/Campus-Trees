@@ -195,6 +195,13 @@
     margin-top:5px;
     line-height:1.5;
   }
+  .en-sub-block{
+    font-family:'Spectral', Georgia, serif;
+    font-style:italic;
+    font-size:14.5px;
+    color:var(--bark);
+    line-height:1.5;
+  }
 
   .heritage-box{
     margin-top:22px;
@@ -1910,10 +1917,14 @@ function renderCard(id, t){
         <div class="row"><dt>Native Region</dt><dd>${esc(t.region)}</dd></div>
         <div class="row"><dt>IUCN Status</dt><dd>${esc(t.iucn)}</dd></div>
       </dl>
-      <div class="section-title">Ecological Importance / पारिस्थितिक महत्व</div>
-      <ul class="facts">${t.eco.map((f,i)=>'<li class="hi-primary">'+esc(t.eco_hi[i])+'<span class="en-sub">'+esc(f)+'</span></li>').join('')}</ul>
-      <div class="section-title">Economic Importance / आर्थिक महत्व</div>
-      <ul class="facts">${t.econ.map((f,i)=>'<li class="hi-primary">'+esc(t.econ_hi[i])+'<span class="en-sub">'+esc(f)+'</span></li>').join('')}</ul>
+      <div class="section-title">पारिस्थितिक महत्व</div>
+      <ul class="facts">${t.eco_hi.map(f=>'<li class="hi-primary">'+esc(f)+'</li>').join('')}</ul>
+      <div class="section-title">Ecological Importance</div>
+      <ul class="facts">${t.eco.map(f=>'<li class="en-sub-block">'+esc(f)+'</li>').join('')}</ul>
+      <div class="section-title">आर्थिक महत्व</div>
+      <ul class="facts">${t.econ_hi.map(f=>'<li class="hi-primary">'+esc(f)+'</li>').join('')}</ul>
+      <div class="section-title">Economic Importance</div>
+      <ul class="facts">${t.econ.map(f=>'<li class="en-sub-block">'+esc(f)+'</li>').join('')}</ul>
       ${t.heritage ? `
       <div class="heritage-box">
         <div class="heritage-label">Heritage Recognition / विशेष सम्मान</div>
