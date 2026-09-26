@@ -1919,10 +1919,10 @@ function renderCard(id, t){
       </dl>
       <div class="section-title">पारिस्थितिक महत्व</div>
       <ul class="facts">${t.eco_hi.map(f=>'<li class="hi-primary">'+esc(f)+'</li>').join('')}</ul>
-      <div class="section-title">Ecological Importance</div>
-      <ul class="facts">${t.eco.map(f=>'<li class="en-sub-block">'+esc(f)+'</li>').join('')}</ul>
       <div class="section-title">आर्थिक महत्व</div>
       <ul class="facts">${t.econ_hi.map(f=>'<li class="hi-primary">'+esc(f)+'</li>').join('')}</ul>
+      <div class="section-title">Ecological Importance</div>
+      <ul class="facts">${t.eco.map(f=>'<li class="en-sub-block">'+esc(f)+'</li>').join('')}</ul>
       <div class="section-title">Economic Importance</div>
       <ul class="facts">${t.econ.map(f=>'<li class="en-sub-block">'+esc(f)+'</li>').join('')}</ul>
       ${t.heritage ? `
